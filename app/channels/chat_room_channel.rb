@@ -1,7 +1,7 @@
 class ChatRoomChannel < ApplicationCable::Channel
   def subscribed
     stop_all_streams
-    stream_from 'chat_room_channel'
+    stream_from 'ChatRoomChannel'
   end
 
   def unsubscribed
@@ -11,8 +11,8 @@ class ChatRoomChannel < ApplicationCable::Channel
 
   def speak(data)
     ActionCable.server.broadcast(
-      'chat_room_channel',
-      message: data['message']
+      'ChatRoomChannel',
+      data['message']
     )
   end
 end
